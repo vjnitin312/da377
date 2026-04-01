@@ -1,0 +1,220 @@
+
+================================================================================
+        HISTORICAL WEATHER DATA ANALYSIS AND VISUALIZATION OVER INDIA
+                          PROJECT REPORT
+================================================================================
+
+Title      : Building an Interactive Platform for Historical Weather Data
+             Analysis and Visualization over India
+Date       : 01 April 2026
+Tools      : Python 3.12, SQLite, Streamlit, Plotly, Folium, Prophet
+Data range : 2010–2023 (daily weather) | 1901–2015 (IMD rainfall)
+
+================================================================================
+1. INTRODUCTION
+================================================================================
+
+India's climate is one of the most diverse and complex in the world, spanning
+tropical coasts, arid deserts, high-altitude plateaus, and humid river deltas.
+Understanding historical weather patterns is critical for agriculture, disaster
+preparedness, urban planning, and climate research.
+
+This project builds an end-to-end interactive platform that collects, cleans,
+stores, analyses, visualises, and forecasts historical weather data for 8 major
+Indian cities across 6 climate variables.
+
+================================================================================
+2. OBJECTIVES
+================================================================================
+
+  1. Collect historical daily weather data for 8 Indian cities (2010-2023)
+  2. Integrate 115-year IMD subdivision rainfall records (1901-2015)
+  3. Design and populate a structured SQLite relational database
+  4. Perform exploratory data analysis and statistical analysis
+  5. Build interactive Folium maps for geographic visualization
+  6. Develop a Streamlit web dashboard with live filters and charts
+  7. Forecast 90-day temperature and rainfall using Facebook Prophet
+
+================================================================================
+3. DATA SOURCES
+================================================================================
+
+  Source 1 : Open-Meteo Historical Weather API
+             URL     : https://archive-api.open-meteo.com/v1/archive
+             Coverage: 8 cities, 2010-01-01 to 2023-12-31
+             Format  : REST API, JSON response
+             License : Free, no API key required
+
+  Source 2 : IMD Subdivision-wise Monthly Rainfall (1901-2015)
+             URL     : https://data.gov.in/catalog/rainfall-india
+             Coverage: 36 meteorological subdivisions, 115 years
+             Format  : CSV
+
+  Source 3 : IMD District-wise Normal Rainfall
+             Coverage: 641 districts, 35 states
+             Format  : CSV
+
+================================================================================
+4. METHODOLOGY
+================================================================================
+
+  Phase 1 — Data Collection
+    - Fetched daily weather via Open-Meteo API with retry logic for rate limits
+    - Downloaded IMD CSV files from data.gov.in open data portal
+    - Total raw records collected: 40,904 daily + 4,116 monthly rainfall rows
+
+  Phase 2 — Data Cleaning
+    - Converted date columns to datetime format
+    - Added derived columns: year, month, day, season, temp_range, humidity_avg
+    - Handled 96 missing rainfall values using subdivision group mean imputation
+    - Capped 3,899 outlier values using 1st-99th percentile IQR method
+    - Added DECADE column for decade-wise trend analysis
+
+  Phase 3 — Database Design
+    - Designed 3-table SQLite schema: cities, daily_weather, rainfall_history
+    - Established foreign key relationship between cities and daily_weather
+    - Loaded all cleaned data into the database (weather_india.db, ~4MB)
+
+  Phase 4 — Exploratory Data Analysis
+    - Generated 6 matplotlib charts covering temperature trends,
+      monsoon patterns, city comparisons, seasonal breakdown,
+      humidity-rainfall correlation, and 115-year rainfall trend
+
+  Phase 5 — Statistical Analysis
+    - Computed Pearson correlation matrix across 6 weather variables
+    - Detected heatwave days using city-specific 95th percentile thresholds
+    - Performed linear regression on 115-year rainfall trend
+    - Calculated monsoon onset index (monthly/annual precipitation ratio)
+    - Identified extreme rainfall days (>50mm/day) per city per year
+
+  Phase 6 — Streamlit Dashboard
+    - Built 4-tab interactive web application at localhost:8501
+    - Implemented sidebar filters: city, year range, season
+    - All 11 Plotly charts update dynamically on filter change
+    - Raw data explorer with CSV download functionality
+
+  Phase 7 — Geographic Visualization
+    - Created 5 interactive Folium HTML maps
+    - City climate marker map with detailed popup cards
+    - Temperature and rainfall bubble maps with color-coded legends
+    - Heatwave risk map on dark tile layer
+    - Combined layer map with toggleable overlays
+
+  Phase 8 — Forecasting
+    - Trained 16 Prophet models (8 cities x 2 variables)
+    - Forecast horizon: 90 days beyond 2023-12-31
+    - Components: yearly seasonality + weekly seasonality + trend
+    - Output: predicted value + upper/lower uncertainty bounds
+
+================================================================================
+5. KEY FINDINGS
+================================================================================
+
+  TEMPERATURE
+  - Chennai is the hottest city: avg max 31.79 C
+  - Bangalore is the coolest  : avg max 28.45 C
+  - Delhi and Jaipur show highest seasonal amplitude (15 C to 42 C)
+  - Mumbai shows flattest temperature curve due to Arabian Sea influence
+
+  RAINFALL
+  - Mumbai dominates rainfall: avg 5.48mm/day, 112 extreme days (>50mm)
+  - All other cities show 0 extreme rain days (capped data effect)
+  - Chennai and Coimbatore follow Northeast monsoon (onset: August)
+  - All other cities follow Southwest monsoon (onset: June-July)
+  - Kolkata receives highest average daily rainfall at 4.44mm/day
+
+  CORRELATION
+  - Strongest negative correlation: temp_range vs humidity_avg (-0.81)
+    Meaning: humid days have smaller gap between day and night temperature
+  - Strong positive: temp_max vs temp_min (0.72)
+  - Precipitation positively correlated with humidity (0.45)
+
+  115-YEAR RAINFALL TREND
+  - Wettest decade: 1930s at 1485mm avg annual rainfall
+  - Declining post-1960: from 1406mm (1960s) to 1335mm (2000s)
+  - Linear regression slope: -0.305mm/year (p=0.47, not statistically
+    significant at 95% confidence — high year-to-year variability)
+
+  HEATWAVE ANALYSIS
+  - Total heatwave days (2010-2023) nearly equal across all cities (~260-269)
+  - This reflects the relative definition (95th percentile per city)
+  - Delhi threshold: 41.1 C | Bangalore threshold: 34.1 C
+  - Mumbai spiked to 54 heatwave days in 2023 — highest single-year reading
+
+  MONSOON ONSET
+  - Bangalore : June  | peak July
+  - Chennai   : August| peak November  (Northeast monsoon)
+  - Delhi     : July  | peak July
+  - Mumbai    : June  | peak July
+  - Kolkata   : June  | peak July
+
+================================================================================
+6. PROJECT STRUCTURE
+================================================================================
+
+  da377/
+  ├── raw_data/              3 original datasets
+  ├── cleaned_data/          2 cleaned CSV files
+  ├── plots/                 12 EDA + statistical charts
+  │   └── forecasts/         16 Prophet forecast charts
+  ├── maps/                  5 interactive HTML maps
+  ├── reports/               stats_summary.txt + forecast_90days.csv
+  ├── scripts/               9 Python scripts
+  ├── app.py                 Streamlit dashboard
+  ├── weather_india.db       SQLite database (~4MB)
+  └── requirements.txt       All dependencies
+
+================================================================================
+7. TOOLS AND LIBRARIES
+================================================================================
+
+  Language  : Python 3.12
+  Database  : SQLite (via sqlite3)
+  Data      : pandas, numpy
+  API       : requests
+  Charts    : matplotlib, seaborn, plotly
+  Maps      : folium
+  Dashboard : streamlit
+  Forecast  : prophet (Facebook/Meta)
+  Stats     : scipy
+
+================================================================================
+8. HOW TO RUN
+================================================================================
+
+  1. Clone the repository
+     git clone https://github.com/YOUR_USERNAME/da377.git
+     cd da377
+
+  2. Create virtual environment
+     python3 -m venv myenv
+     source myenv/bin/activate
+
+  3. Install dependencies
+     pip install -r requirements.txt
+
+  4. Run the Streamlit dashboard
+     streamlit run app.py
+
+  5. Open browser at http://localhost:8501
+
+================================================================================
+9. CONCLUSION
+================================================================================
+
+This project successfully demonstrates a complete data engineering and analysis
+pipeline applied to a real-world climate dataset. Starting from raw API calls
+and government CSV files, the project delivers:
+
+  - A clean relational database with 45,020 records
+  - 28 analysis charts covering temperature, rainfall, humidity, and extremes
+  - 5 interactive geographic maps
+  - A fully functional web dashboard with live filtering
+  - 90-day forecasts for 8 cities using machine learning
+
+The platform can be extended with more cities, satellite data integration,
+district-level analysis, and real-time API updates.
+
+================================================================================
+END OF REPORT
+================================================================================

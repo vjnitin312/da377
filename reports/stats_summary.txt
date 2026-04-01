@@ -1,0 +1,118 @@
+
+=======================================================
+ANALYSIS 1 — CORRELATION MATRIX
+=======================================================
+
+               temp_max  temp_min  temp_range  precipitation  windspeed  humidity_avg
+temp_max          1.000     0.718       0.240         -0.175      0.162        -0.484
+temp_min          0.718     1.000      -0.503          0.201      0.372         0.146
+temp_range        0.240    -0.503       1.000         -0.497     -0.318        -0.805
+precipitation    -0.175     0.201      -0.497          1.000      0.159         0.454
+windspeed         0.162     0.372      -0.318          0.159      1.000         0.075
+humidity_avg     -0.484     0.146      -0.805          0.454      0.075         1.000
+Saved: plots/07_correlation_matrix.png
+
+=======================================================
+ANALYSIS 2 — HEATWAVE DETECTION
+=======================================================
+
+Heatwave days per city (total 2010–2023):
+city_name
+Jaipur        269
+Mumbai        268
+Bangalore     266
+Chennai       264
+Hyderabad     264
+Coimbatore    260
+Kolkata       260
+Delhi         257
+
+95th percentile temperature thresholds per city:
+ city_name  threshold_95p
+ Bangalore           34.1
+   Chennai           37.2
+Coimbatore           36.8
+     Delhi           41.1
+ Hyderabad           38.5
+    Jaipur           41.2
+   Kolkata           37.2
+    Mumbai           34.2
+Saved: plots/08_heatwave_days.png
+
+=======================================================
+ANALYSIS 3 — DECADE-WISE RAINFALL TREND
+=======================================================
+
+Decade-wise all-India average annual rainfall:
+         avg_mm  std_mm  min_mm  max_mm
+decade                                 
+1900    1307.32  825.23   114.4  3699.2
+1910    1415.29  874.51    62.3  5486.3
+1920    1453.04  997.31   169.7  5691.4
+1930    1484.89  995.79   137.4  6129.0
+1940    1481.45  976.74   223.1  6331.1
+1950    1477.44  920.25   179.8  5063.5
+1960    1405.93  917.17   119.0  5553.9
+1970    1398.53  853.00   164.3  4316.2
+1980    1396.81  865.51    92.7  4155.3
+1990    1450.97  897.54   179.0  4636.3
+2000    1335.44  829.15    92.4  3862.0
+2010    1360.82  880.63   302.4  4229.4
+
+Linear trend (1901–2015):
+  Slope     : -0.3053 mm/year
+  R²        : 0.0001
+  p-value   : 0.4742  (not significant)
+Saved: plots/09_decade_rainfall.png
+
+=======================================================
+ANALYSIS 4 — MONSOON ONSET INDEX
+=======================================================
+
+Monsoon intensity ratio (monthly avg / annual daily avg):
+Ratio > 1.5 = monsoon-active month
+
+  Bangalore      onset: Jun    peak: Jul
+  Chennai        onset: Aug    peak: Nov
+  Coimbatore     onset: Aug    peak: Oct
+  Delhi          onset: Jul    peak: Jul
+  Hyderabad      onset: Jun    peak: Jul
+  Jaipur         onset: Jul    peak: Jul
+  Kolkata        onset: Jun    peak: Jul
+  Mumbai         onset: Jun    peak: Jul
+Saved: plots/10_monsoon_onset_index.png
+
+=======================================================
+ANALYSIS 5 — MONTHLY STATISTICS (ALL CITIES COMBINED)
+=======================================================
+
+     avg_temp_max  avg_temp_min  avg_precip  avg_humidity  avg_windspeed
+Jan         26.01         15.23        0.43         65.21          13.80
+Feb         28.91         16.99        0.34         59.44          14.67
+Mar         32.54         20.40        0.46         56.07          15.85
+Apr         35.08         23.74        0.82         55.34          17.03
+May         35.52         25.62        1.67         58.21          18.40
+Jun         33.25         25.66        4.69         67.50          20.23
+Jul         30.52         24.57        8.07         77.11          19.64
+Aug         29.90         24.09        6.81         79.06          18.29
+Sep         30.09         23.57        5.51         78.09          16.32
+Oct         30.27         21.87        3.33         71.39          13.35
+Nov         28.40         19.06        2.34         68.32          13.47
+Dec         26.31         16.31        1.02         67.05          13.76
+Saved: plots/11_monthly_statistics.png
+
+=======================================================
+ANALYSIS 6 — EXTREME RAINFALL DAYS (>50mm)
+=======================================================
+
+Total extreme rain days (>50mm) per city (2010–2023):
+city_name
+Mumbai        112
+Bangalore       0
+Coimbatore      0
+Chennai         0
+Delhi           0
+Hyderabad       0
+Jaipur          0
+Kolkata         0
+Saved: plots/12_extreme_rain_days.png
