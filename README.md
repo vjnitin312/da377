@@ -37,7 +37,7 @@ da377/
 ├── plots/             28 analysis charts
 ├── maps/              5 interactive HTML maps
 ├── reports/           Project report + forecast CSV
-├── scripts/           9 Python scripts
+├── scripts/           11 Python scripts
 ├── app.py             Streamlit dashboard
 ├── weather_india.db   SQLite database
 └── requirements.txt
