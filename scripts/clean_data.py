@@ -4,10 +4,6 @@ import os
 
 os.makedirs("cleaned_data", exist_ok=True)
 
-print("=" * 50)
-print("PHASE 2 — DATA CLEANING")
-print("=" * 50)
-
 # ─────────────────────────────────────────────
 # PART A — Clean india_weather_raw.csv
 # ─────────────────────────────────────────────
@@ -82,10 +78,6 @@ print(f"      Columns: {list(df.columns)}")
 # ─────────────────────────────────────────────
 # PART B — Clean rainfall_in_india_1901-2015.csv
 # ─────────────────────────────────────────────
-print("\n" + "=" * 50)
-print("CLEANING RAINFALL 1901-2015 DATA")
-print("=" * 50)
-
 rf = pd.read_csv("raw_data/rainfall_in_india_1901-2015.csv")
 print(f"\nShape before : {rf.shape}")
 
@@ -123,7 +115,3 @@ rf.to_csv(output_path2, index=False)
 print(f"\nSaved: {output_path2}")
 print(f"Final shape: {rf.shape}")
 print(f"Columns: {list(rf.columns)}")
-
-print("\n" + "=" * 50)
-print("PHASE 2 COMPLETE")
-print("=" * 50)
