@@ -37,7 +37,7 @@ da377/
 ├── plots/             28 analysis charts
 ├── maps/              5 interactive HTML maps
 ├── reports/           Project report + forecast CSV
-├── scripts/           11 Python scripts
+├── scripts/           10 Python scripts
 ├── app.py             Streamlit dashboard
 ├── weather_india.db   SQLite database
 └── requirements.txt
@@ -49,8 +49,8 @@ Python 3.12 · pandas · SQLite · Streamlit · Plotly · Folium · Prophet · M
 
 ## Data Sources
 
-- [Open-Meteo API](https://open-meteo.com/) — free historical weather API
-- [data.gov.in](https://data.gov.in/catalog/rainfall-india) — IMD rainfall data
+- [Open-Meteo API](https://open-meteo.com/) — free historical weather API, no key required
+- [data.gov.in](https://data.gov.in/catalog/rainfall-india) — IMD official rainfall CSVs (downloaded manually)
 
 ## Key Findings
 
