@@ -19,7 +19,7 @@ Chennai · Mumbai · Delhi · Kolkata · Bangalore · Hyderabad · Coimbatore ·
 
 ## Quick Start
 ```bash
-git clone https://github.com/YOUR_USERNAME/da377.git
+git clone https://github.com/vjnitin312/da377.git
 cd da377
 python3 -m venv myenv
 source myenv/bin/activate
