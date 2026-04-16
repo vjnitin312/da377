@@ -1,6 +1,5 @@
 import requests
 import pandas as pd
-import os
 import time
 
 # Only the 5 cities that failed
