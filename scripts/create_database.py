@@ -167,4 +167,3 @@ for row in result:
     print(f"        {row[0]:<15} {row[1]} °C")
 
 conn.close()
-print(f"DATABASE SAVED: {DB_PATH}")
