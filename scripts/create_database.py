@@ -1,12 +1,7 @@
 import sqlite3
 import pandas as pd
-import os
 
 DB_PATH = "weather_india.db"
-
-print("=" * 50)
-print("PHASE 3 — DATABASE CREATION")
-print("=" * 50)
 
 # Connect (creates the file if it doesn't exist)
 conn = sqlite3.connect(DB_PATH)
@@ -172,7 +167,4 @@ for row in result:
     print(f"        {row[0]:<15} {row[1]} °C")
 
 conn.close()
-print("\n" + "=" * 50)
 print(f"DATABASE SAVED: {DB_PATH}")
-print("PHASE 3 COMPLETE")
-print("=" * 50)
