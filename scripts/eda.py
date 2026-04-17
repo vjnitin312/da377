@@ -10,10 +10,6 @@ os.makedirs("plots", exist_ok=True)
 
 conn = sqlite3.connect("weather_india.db")
 
-print("=" * 50)
-print("PHASE 4 — EXPLORATORY DATA ANALYSIS")
-print("=" * 50)
-
 # ── Shared style ──────────────────────────────
 plt.rcParams.update({
     "figure.facecolor": "white",
@@ -91,8 +87,6 @@ print("\n[3/6] City-wise comparison...")
 df3 = pd.read_sql("""
     SELECT c.city_name,
            ROUND(AVG(w.temp_max), 2)      AS avg_max_temp,
-           ROUND(AVG(w.temp_min), 2)      AS avg_min_temp,
-           ROUND(AVG(w.precipitation), 2) AS avg_rain,
            ROUND(AVG(w.humidity_avg), 2)  AS avg_humidity
     FROM daily_weather w
     JOIN cities c ON w.city_id = c.city_id
@@ -131,8 +125,7 @@ print("      Saved: plots/03_city_comparison.png")
 print("\n[4/6] Seasonal breakdown...")
 df4 = pd.read_sql("""
     SELECT c.city_name, w.season,
-           ROUND(AVG(w.temp_max), 2)      AS avg_max,
-           ROUND(AVG(w.precipitation), 2) AS avg_rain
+           ROUND(AVG(w.temp_max), 2)      AS avg_max
     FROM daily_weather w
     JOIN cities c ON w.city_id = c.city_id
     GROUP BY c.city_name, w.season
@@ -220,7 +213,4 @@ plt.close()
 print("      Saved: plots/06_115year_rainfall_trend.png")
 
 conn.close()
-print("\n" + "=" * 50)
 print("ALL 6 PLOTS SAVED IN: plots/")
-print("PHASE 4 COMPLETE")
-print("=" * 50)
