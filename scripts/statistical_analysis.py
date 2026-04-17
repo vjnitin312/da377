@@ -246,7 +246,3 @@ with open(report_path, "w") as f:
     f.write("\n".join(report))
 
 conn.close()
-print(f"\nReport saved: {report_path}")
-print("=" * 55)
-print("PHASE 5 COMPLETE — 6 plots + 1 report saved")
-print("=" * 55)
