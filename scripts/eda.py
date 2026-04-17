@@ -213,4 +213,3 @@ plt.close()
 print("      Saved: plots/06_115year_rainfall_trend.png")
 
 conn.close()
-print("ALL 6 PLOTS SAVED IN: plots/")
