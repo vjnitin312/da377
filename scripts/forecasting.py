@@ -24,10 +24,6 @@ cities    = sorted(df["city_name"].unique())
 FORECAST_DAYS = 90
 all_forecasts = []
 
-print("=" * 55)
-print("PHASE 8 — FORECASTING WITH PROPHET")
-print("=" * 55)
-
 plt.rcParams.update({
     "figure.facecolor": "white",
     "axes.facecolor":   "white",
@@ -145,13 +141,9 @@ final_forecast_df["upper_bound"]  = final_forecast_df["upper_bound"].round(2)
 csv_path = "reports/forecast_90days.csv"
 final_forecast_df.to_csv(csv_path, index=False)
 
-print("\n" + "=" * 55)
 print(f"Forecast CSV saved : {csv_path}")
 print(f"Total forecast rows: {len(final_forecast_df)}")
 print(f"Charts saved in    : plots/forecasts/")
 print(f"Cities forecasted  : {len(cities)}")
 print(f"Variables          : Temperature + Rainfall")
 print(f"Forecast horizon   : {FORECAST_DAYS} days")
-print("=" * 55)
-print("PHASE 8 COMPLETE")
-print("=" * 55)
