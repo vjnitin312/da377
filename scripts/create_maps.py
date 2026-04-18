@@ -32,10 +32,6 @@ daily = pd.read_sql("""
 
 conn.close()
 
-print("=" * 50)
-print("PHASE 7 — INTERACTIVE MAP CREATION")
-print("=" * 50)
-
 # ─────────────────────────────────────────────
 # Colour helper based on temperature
 # ─────────────────────────────────────────────
@@ -334,8 +330,3 @@ folium.LayerControl(collapsed=False).add_to(m5)
 
 m5.save("maps/05_combined_layer_map.html")
 print("      Saved: maps/05_combined_layer_map.html")
-
-print("\n" + "=" * 50)
-print("ALL 5 MAPS SAVED IN: maps/")
-print("PHASE 7 COMPLETE")
-print("=" * 50)
