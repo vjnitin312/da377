@@ -144,9 +144,12 @@ Indian cities across 6 climate variables.
   MONSOON ONSET
   - Bangalore : June  | peak July
   - Chennai   : August| peak November  (Northeast monsoon)
+  - Coimbatore: August| peak October   (Northeast monsoon)
   - Delhi     : July  | peak July
-  - Mumbai    : June  | peak July
+  - Hyderabad : June  | peak July
+  - Jaipur    : July  | peak July
   - Kolkata   : June  | peak July
+  - Mumbai    : June  | peak July
 
 ================================================================================
 6. PROJECT STRUCTURE
