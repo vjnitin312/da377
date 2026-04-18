@@ -8,10 +8,10 @@ and visualization across 8 major Indian cities.
 - 40,904 daily weather records (2010–2023) via Open-Meteo API
 - 115-year IMD subdivision rainfall data (1901–2015)
 - SQLite relational database (3 tables, ~4MB)
-- 12 EDA charts + 6 statistical analysis charts
+- 6 EDA charts + 6 statistical analysis charts
 - 5 interactive Folium maps (markers, bubbles, heatmap)
 - Streamlit web dashboard with live filters
-- 90-day Prophet forecasts for all 8 cities
+- 16 charts of 90-day Prophet forecasts for all 8 cities
 
 ## Cities Covered
 
@@ -56,6 +56,6 @@ Python 3.12 · pandas · SQLite · Streamlit · Plotly · Folium · Prophet · M
 
 - Chennai is the hottest city (31.79°C avg max), Bangalore the coolest (28.45°C)
 - Mumbai receives the most extreme rainfall — 112 days >50mm over 14 years
-- Chennai follows Northeast monsoon (onset August), all others Southwest (June)
+- Chennai & Coimbatore follows Northeast monsoon (onset August), all others Southwest (June)
 - India's wettest decade was the 1930s (1485mm); declining trend post-1960
 - Humidity and temperature range are strongly negatively correlated (−0.81)
