@@ -4,9 +4,9 @@
                           PROJECT REPORT
 ================================================================================
 
-Title      : Building an Interactive Platform for Historical Weather Data
-             Analysis and Visualization over India
-Date       : 01 April 2026
+Title      : INDIACLIMATE: An interactive platform for historical weather
+             data analysis, visualization, and forecasting
+Date       : 17 April 2026
 Tools      : Python 3.12, SQLite, Streamlit, Plotly, Folium, Prophet
 Data range : 2010–2023 (daily weather) | 1901–2015 (IMD rainfall)
 
@@ -136,7 +136,7 @@ Indian cities across 6 climate variables.
     significant at 95% confidence — high year-to-year variability)
 
   HEATWAVE ANALYSIS
-  - Total heatwave days (2010-2023) nearly equal across all cities (~260-269)
+  - Total heatwave days (2010-2023) nearly equal across all cities (257-269)
   - This reflects the relative definition (95th percentile per city)
   - Delhi threshold: 41.1 C | Bangalore threshold: 34.1 C
   - Mumbai spiked to 54 heatwave days in 2023 — highest single-year reading
@@ -155,11 +155,11 @@ Indian cities across 6 climate variables.
   da377/
   ├── raw_data/              3 original datasets
   ├── cleaned_data/          2 cleaned CSV files
-  ├── plots/                 12 EDA + statistical charts
+  ├── plots/                 12 (EDA + statistical charts)
   │   └── forecasts/         16 Prophet forecast charts
   ├── maps/                  5 interactive HTML maps
   ├── reports/               stats_summary.txt + forecast_90days.csv
-  ├── scripts/               9 Python scripts
+  ├── scripts/               10 Python scripts
   ├── app.py                 Streamlit dashboard
   ├── weather_india.db       SQLite database (~4MB)
   └── requirements.txt       All dependencies
@@ -183,7 +183,7 @@ Indian cities across 6 climate variables.
 ================================================================================
 
   1. Clone the repository
-     git clone https://github.com/YOUR_USERNAME/da377.git
+     git clone https://github.com/vjnitin312/da377.git
      cd da377
 
   2. Create virtual environment
