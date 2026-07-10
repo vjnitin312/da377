@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_aab2ca1390216d6b991756fd4917ba68 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style='position:fixed;bottom:30px;left:30px;z-index:1000;
+     background:white;padding:12px;border-radius:8px;
+     border:1px solid #ccc;font-size:12px;font-family:Arial'>
+  <b>Avg daily rainfall</b><br>
+  <span style='color:blue'>●</span> ≥ 4 mm (Heavy)<br>
+  <span style='color:lightblue'>●</span> 2–4 mm (Moderate)<br>
+  <span style='color:#f5deb3'>●</span> &lt; 2 mm (Light)
+  <br><i style='font-size:11px'>Bubble size = rainfall amount</i>
+</div>
+    
+            <div class="folium-map" id="map_aab2ca1390216d6b991756fd4917ba68" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_aab2ca1390216d6b991756fd4917ba68 = L.map(
+                "map_aab2ca1390216d6b991756fd4917ba68",
+                {
+                    center: [20.5, 78.9],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 5,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_c672a6d44cc718087b5aec1a86b2b4b6 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_c672a6d44cc718087b5aec1a86b2b4b6.addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+            var circle_marker_7deacf1f92686b109be2c58c07a3922d = L.circleMarker(
+                [12.97, 77.59],
+                {"bubblingMouseEvents": true, "color": "lightblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 31.36, "stroke": true, "weight": 3}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+        var popup_b167a8d921cc3d2346edd8acc392124f = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_5ec6abcd514ea8aa36d290fcb4011d7c = $(`<div id="html_5ec6abcd514ea8aa36d290fcb4011d7c" style="width: 100.0%; height: 100.0%;"><b>Bangalore</b><br>Avg rainfall: 2.67 mm/day<br>Extreme rain days: 0</div>`)[0];
+                popup_b167a8d921cc3d2346edd8acc392124f.setContent(html_5ec6abcd514ea8aa36d290fcb4011d7c);
+            
+        
+
+        circle_marker_7deacf1f92686b109be2c58c07a3922d.bindPopup(popup_b167a8d921cc3d2346edd8acc392124f)
+        ;
+
+        
+    
+    
+            circle_marker_7deacf1f92686b109be2c58c07a3922d.bindTooltip(
+                `<div>
+                     Bangalore: 2.67 mm/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_6144ef955ce80c09770e72c03752b1d1 = L.marker(
+                [12.97, 77.59],
+                {
+}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+            var div_icon_db39aabf43a92ddbacb560a048fff5ff = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10px;font-weight:bold;color:#333;margin-top:-6px\"\u003eBangalore\u003cbr\u003e2.67mm\u003c/div\u003e",
+  "iconSize": [90, 30],
+  "iconAnchor": [45, 0],
+  "className": "empty",
+});
+        
+    
+                marker_6144ef955ce80c09770e72c03752b1d1.setIcon(div_icon_db39aabf43a92ddbacb560a048fff5ff);
+            
+    
+            var circle_marker_cc893229e8bd376ca7c85cbdcccd91ce = L.circleMarker(
+                [13.08, 80.27],
+                {"bubblingMouseEvents": true, "color": "lightblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 32.64, "stroke": true, "weight": 3}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+        var popup_9fc6c7b4d2daa29e2dc42f4a3085fcc1 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_a91878c1f46374eb7888d183214b0844 = $(`<div id="html_a91878c1f46374eb7888d183214b0844" style="width: 100.0%; height: 100.0%;"><b>Chennai</b><br>Avg rainfall: 2.83 mm/day<br>Extreme rain days: 0</div>`)[0];
+                popup_9fc6c7b4d2daa29e2dc42f4a3085fcc1.setContent(html_a91878c1f46374eb7888d183214b0844);
+            
+        
+
+        circle_marker_cc893229e8bd376ca7c85cbdcccd91ce.bindPopup(popup_9fc6c7b4d2daa29e2dc42f4a3085fcc1)
+        ;
+
+        
+    
+    
+            circle_marker_cc893229e8bd376ca7c85cbdcccd91ce.bindTooltip(
+                `<div>
+                     Chennai: 2.83 mm/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_2ec62da5639b1e08d4e7e2d3cf7e9380 = L.marker(
+                [13.08, 80.27],
+                {
+}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+            var div_icon_7fdf8fdf4aaf2cbc1a4a8dbfaf6c3a4d = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10px;font-weight:bold;color:#333;margin-top:-6px\"\u003eChennai\u003cbr\u003e2.83mm\u003c/div\u003e",
+  "iconSize": [90, 30],
+  "iconAnchor": [45, 0],
+  "className": "empty",
+});
+        
+    
+                marker_2ec62da5639b1e08d4e7e2d3cf7e9380.setIcon(div_icon_7fdf8fdf4aaf2cbc1a4a8dbfaf6c3a4d);
+            
+    
+            var circle_marker_76bf40b71e776b234353b0f52b477a85 = L.circleMarker(
+                [11.0, 76.96],
+                {"bubblingMouseEvents": true, "color": "lightblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 33.28, "stroke": true, "weight": 3}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+        var popup_2256769881b67c708659f4bc952a2cd5 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_2e396042c3851b039957639cfd89812e = $(`<div id="html_2e396042c3851b039957639cfd89812e" style="width: 100.0%; height: 100.0%;"><b>Coimbatore</b><br>Avg rainfall: 2.91 mm/day<br>Extreme rain days: 0</div>`)[0];
+                popup_2256769881b67c708659f4bc952a2cd5.setContent(html_2e396042c3851b039957639cfd89812e);
+            
+        
+
+        circle_marker_76bf40b71e776b234353b0f52b477a85.bindPopup(popup_2256769881b67c708659f4bc952a2cd5)
+        ;
+
+        
+    
+    
+            circle_marker_76bf40b71e776b234353b0f52b477a85.bindTooltip(
+                `<div>
+                     Coimbatore: 2.91 mm/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_8fe7788b8aa71180227410ec52a1605d = L.marker(
+                [11.0, 76.96],
+                {
+}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+            var div_icon_c74a3d5e7d47a03bf29336ebbb8da0a3 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10px;font-weight:bold;color:#333;margin-top:-6px\"\u003eCoimbatore\u003cbr\u003e2.91mm\u003c/div\u003e",
+  "iconSize": [90, 30],
+  "iconAnchor": [45, 0],
+  "className": "empty",
+});
+        
+    
+                marker_8fe7788b8aa71180227410ec52a1605d.setIcon(div_icon_c74a3d5e7d47a03bf29336ebbb8da0a3);
+            
+    
+            var circle_marker_6fe876f8b86916e0f084fa6afd0613a6 = L.circleMarker(
+                [28.61, 77.2],
+                {"bubblingMouseEvents": true, "color": "beige", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "beige", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 24.16, "stroke": true, "weight": 3}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+        var popup_66be4c0d97e3c2bc4f44ec0b3adb1290 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_b0f383cee37e311a288b5a0bec3e3757 = $(`<div id="html_b0f383cee37e311a288b5a0bec3e3757" style="width: 100.0%; height: 100.0%;"><b>Delhi</b><br>Avg rainfall: 1.77 mm/day<br>Extreme rain days: 0</div>`)[0];
+                popup_66be4c0d97e3c2bc4f44ec0b3adb1290.setContent(html_b0f383cee37e311a288b5a0bec3e3757);
+            
+        
+
+        circle_marker_6fe876f8b86916e0f084fa6afd0613a6.bindPopup(popup_66be4c0d97e3c2bc4f44ec0b3adb1290)
+        ;
+
+        
+    
+    
+            circle_marker_6fe876f8b86916e0f084fa6afd0613a6.bindTooltip(
+                `<div>
+                     Delhi: 1.77 mm/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_a70b4ae0daa33a0aaa35845eed7a9545 = L.marker(
+                [28.61, 77.2],
+                {
+}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+            var div_icon_a32a0469fed61239e56a1ec342fc41a2 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10px;font-weight:bold;color:#333;margin-top:-6px\"\u003eDelhi\u003cbr\u003e1.77mm\u003c/div\u003e",
+  "iconSize": [90, 30],
+  "iconAnchor": [45, 0],
+  "className": "empty",
+});
+        
+    
+                marker_a70b4ae0daa33a0aaa35845eed7a9545.setIcon(div_icon_a32a0469fed61239e56a1ec342fc41a2);
+            
+    
+            var circle_marker_3b2cc1dade9eda2a7794b2c4aa492713 = L.circleMarker(
+                [17.38, 78.48],
+                {"bubblingMouseEvents": true, "color": "lightblue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "lightblue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 27.28, "stroke": true, "weight": 3}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+        var popup_a0bba2ebf8c5742371b2a9efb40890c6 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_4495cd5a85262ccaff30f5fce8fefb85 = $(`<div id="html_4495cd5a85262ccaff30f5fce8fefb85" style="width: 100.0%; height: 100.0%;"><b>Hyderabad</b><br>Avg rainfall: 2.16 mm/day<br>Extreme rain days: 0</div>`)[0];
+                popup_a0bba2ebf8c5742371b2a9efb40890c6.setContent(html_4495cd5a85262ccaff30f5fce8fefb85);
+            
+        
+
+        circle_marker_3b2cc1dade9eda2a7794b2c4aa492713.bindPopup(popup_a0bba2ebf8c5742371b2a9efb40890c6)
+        ;
+
+        
+    
+    
+            circle_marker_3b2cc1dade9eda2a7794b2c4aa492713.bindTooltip(
+                `<div>
+                     Hyderabad: 2.16 mm/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_3d1091aff46b11ac1c65f55e362f0413 = L.marker(
+                [17.38, 78.48],
+                {
+}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+            var div_icon_b990aa2fb6d874f12d2b440e58cba062 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10px;font-weight:bold;color:#333;margin-top:-6px\"\u003eHyderabad\u003cbr\u003e2.16mm\u003c/div\u003e",
+  "iconSize": [90, 30],
+  "iconAnchor": [45, 0],
+  "className": "empty",
+});
+        
+    
+                marker_3d1091aff46b11ac1c65f55e362f0413.setIcon(div_icon_b990aa2fb6d874f12d2b440e58cba062);
+            
+    
+            var circle_marker_d84af9a87d9d6aea6840e13336788185 = L.circleMarker(
+                [26.91, 75.78],
+                {"bubblingMouseEvents": true, "color": "beige", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "beige", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 22.08, "stroke": true, "weight": 3}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+        var popup_36228f76b3e7528e7624c6f185b08f5a = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_34a39e49ed18dca34ce32858e283a5c5 = $(`<div id="html_34a39e49ed18dca34ce32858e283a5c5" style="width: 100.0%; height: 100.0%;"><b>Jaipur</b><br>Avg rainfall: 1.51 mm/day<br>Extreme rain days: 0</div>`)[0];
+                popup_36228f76b3e7528e7624c6f185b08f5a.setContent(html_34a39e49ed18dca34ce32858e283a5c5);
+            
+        
+
+        circle_marker_d84af9a87d9d6aea6840e13336788185.bindPopup(popup_36228f76b3e7528e7624c6f185b08f5a)
+        ;
+
+        
+    
+    
+            circle_marker_d84af9a87d9d6aea6840e13336788185.bindTooltip(
+                `<div>
+                     Jaipur: 1.51 mm/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_f2255c2ebb74872d177bab3a61eaca27 = L.marker(
+                [26.91, 75.78],
+                {
+}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+            var div_icon_2af106fd756c1dbeee04596c33e0ae72 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10px;font-weight:bold;color:#333;margin-top:-6px\"\u003eJaipur\u003cbr\u003e1.51mm\u003c/div\u003e",
+  "iconSize": [90, 30],
+  "iconAnchor": [45, 0],
+  "className": "empty",
+});
+        
+    
+                marker_f2255c2ebb74872d177bab3a61eaca27.setIcon(div_icon_2af106fd756c1dbeee04596c33e0ae72);
+            
+    
+            var circle_marker_acdd013158fdd93d25ac196719f96427 = L.circleMarker(
+                [22.57, 88.36],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 45.52, "stroke": true, "weight": 3}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+        var popup_8e9bfb5bf1a392069d0b8770a01d73f4 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_aa2e0e3a439a012da853e65930fd0cc5 = $(`<div id="html_aa2e0e3a439a012da853e65930fd0cc5" style="width: 100.0%; height: 100.0%;"><b>Kolkata</b><br>Avg rainfall: 4.44 mm/day<br>Extreme rain days: 0</div>`)[0];
+                popup_8e9bfb5bf1a392069d0b8770a01d73f4.setContent(html_aa2e0e3a439a012da853e65930fd0cc5);
+            
+        
+
+        circle_marker_acdd013158fdd93d25ac196719f96427.bindPopup(popup_8e9bfb5bf1a392069d0b8770a01d73f4)
+        ;
+
+        
+    
+    
+            circle_marker_acdd013158fdd93d25ac196719f96427.bindTooltip(
+                `<div>
+                     Kolkata: 4.44 mm/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_b7063dd18abecf9432c9b8c694b6f948 = L.marker(
+                [22.57, 88.36],
+                {
+}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+            var div_icon_4a37506c461f6c892f5b8fa2740fbc07 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10px;font-weight:bold;color:#333;margin-top:-6px\"\u003eKolkata\u003cbr\u003e4.44mm\u003c/div\u003e",
+  "iconSize": [90, 30],
+  "iconAnchor": [45, 0],
+  "className": "empty",
+});
+        
+    
+                marker_b7063dd18abecf9432c9b8c694b6f948.setIcon(div_icon_4a37506c461f6c892f5b8fa2740fbc07);
+            
+    
+            var circle_marker_8a3c6c2854b79ba103835f265aff62a0 = L.circleMarker(
+                [19.07, 72.87],
+                {"bubblingMouseEvents": true, "color": "blue", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "blue", "fillOpacity": 0.7, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 53.84, "stroke": true, "weight": 3}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+        var popup_b5b046b08b65a07469f6d4a43d572ff9 = L.popup({
+  "maxWidth": 200,
+});
+
+        
+            
+                var html_77b270bc4f84f115a0857889d1e9ec15 = $(`<div id="html_77b270bc4f84f115a0857889d1e9ec15" style="width: 100.0%; height: 100.0%;"><b>Mumbai</b><br>Avg rainfall: 5.48 mm/day<br>Extreme rain days: 112</div>`)[0];
+                popup_b5b046b08b65a07469f6d4a43d572ff9.setContent(html_77b270bc4f84f115a0857889d1e9ec15);
+            
+        
+
+        circle_marker_8a3c6c2854b79ba103835f265aff62a0.bindPopup(popup_b5b046b08b65a07469f6d4a43d572ff9)
+        ;
+
+        
+    
+    
+            circle_marker_8a3c6c2854b79ba103835f265aff62a0.bindTooltip(
+                `<div>
+                     Mumbai: 5.48 mm/day
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_ee18b77f193bfc3da3f232fde9360426 = L.marker(
+                [19.07, 72.87],
+                {
+}
+            ).addTo(map_aab2ca1390216d6b991756fd4917ba68);
+        
+    
+            var div_icon_51bd6c4261d990ceda82e94529183f57 = L.divIcon({
+  "html": "\u003cdiv style=\"font-size:10px;font-weight:bold;color:#333;margin-top:-6px\"\u003eMumbai\u003cbr\u003e5.48mm\u003c/div\u003e",
+  "iconSize": [90, 30],
+  "iconAnchor": [45, 0],
+  "className": "empty",
+});
+        
+    
+                marker_ee18b77f193bfc3da3f232fde9360426.setIcon(div_icon_51bd6c4261d990ceda82e94529183f57);
+            
+</script>
+</html>
